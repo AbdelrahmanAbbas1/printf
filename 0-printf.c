@@ -16,10 +16,13 @@ int _printf(const char *format, ...)
 	char *s;
 
 	va_start(args, format);
+	if (format != NULL)
+	{
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
+			len++;
 			switch (format[i + 1])
 			{
 				case 'c':
@@ -39,14 +42,11 @@ int _printf(const char *format, ...)
 					break;
 			}
 			i++;
-			len++;
 		}
 		else
-		{
 			_putchar(format[i]);
-			len++;
-		}
 		i++;
+	}
 	}
 	va_end(args);
 	return (len);
