@@ -4,7 +4,7 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-void print_s(char *arg);
+void print_s(int *sum, char *arg);
 void print_i_d(int arg);
 void print_b(unsigned int arg);
 void print_uo(unsigned int x, unsigned int arg);
