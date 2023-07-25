@@ -37,15 +37,12 @@ int _printf(const char *format, ...)
 						break;
 					case 's':
 						s = va_arg(args, char *);
-						if (s != NULL)
-						{
 						while (s[sum] != '\0')
 						{
 							_putchar(s[sum]);
 							sum++;
 						}
 						len += sum - 1;
-						}
 						break;
 					case '%':
 						_putchar('%');
