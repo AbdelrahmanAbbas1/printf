@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int i = 0, len = 0;
 	va_list args;
 	char *s;
-	int sum = 0;
+	int sum;
 
 	va_start(args, format);
 	if (format == NULL)
@@ -37,6 +37,7 @@ int _printf(const char *format, ...)
 						break;
 					case 's':
 						s = va_arg(args, char *);
+						sum = 0;
 						if (s != NULL)
 						{
 						while (s[sum] != '\0')
