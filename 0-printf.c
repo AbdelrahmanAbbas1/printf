@@ -8,6 +8,8 @@
  */
 void print_s(char *arg)
 {
+	if (arg == NULL)
+		return;
 	while (*arg != '\0')
 	{
 		_putchar(*arg);
