@@ -6,7 +6,7 @@
  * print_s - Prints string
  * @arg: The argument
  */
-void print_s(char *arg)
+void print_s(int *sum, char *arg)
 {
 	if (arg == NULL)
 		return;
@@ -15,6 +15,7 @@ void print_s(char *arg)
 	{
 		_putchar(*arg);
 		arg++;
+		sum++;
 	}
 }
 /**
@@ -28,6 +29,8 @@ int _printf(const char *format, ...)
 {
 	int i = 0, len = 0;
 	va_list args;
+	char *s;
+	int sum = 0;
 
 	va_start(args, format);
 	if (format == NULL)
@@ -49,7 +52,13 @@ int _printf(const char *format, ...)
 						_putchar(va_arg(args, int));
 						break;
 					case 's':
-						print_s(va_arg(args, char *));
+						s = va_arg(args, char *);
+						while (s[sum] != '\0')
+						{
+							_putchar(s[sum]);
+							sum++;
+						}
+						len += sum - 1;
 						break;
 					case '%':
 						_putchar('%');
