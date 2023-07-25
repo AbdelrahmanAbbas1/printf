@@ -3,22 +3,6 @@
 #include <stdarg.h>
 
 /**
- * print_s - Prints string
- * @arg: The argument
- */
-void print_s(int *sum, char *arg)
-{
-	if (arg == NULL)
-		return;
-
-	while (*arg != '\0')
-	{
-		_putchar(*arg);
-		arg++;
-		sum++;
-	}
-}
-/**
  * _printf - Prints the output according to a certain format
  * @format: The format to be followed
  * @...: The arguments to be passed
@@ -53,12 +37,17 @@ int _printf(const char *format, ...)
 						break;
 					case 's':
 						s = va_arg(args, char *);
+						if (s != NULL)
+						{
 						while (s[sum] != '\0')
 						{
 							_putchar(s[sum]);
 							sum++;
 						}
 						len += sum - 1;
+						}
+						else
+							return (-1);
 						break;
 					case '%':
 						_putchar('%');
