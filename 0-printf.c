@@ -13,6 +13,7 @@ void print_s(char *arg)
 		_putchar(*arg);
 		arg++;
 	}
+	_putchar('\0');
 }
 /**
  * _printf - Prints the output according to a certain format
