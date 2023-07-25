@@ -76,5 +76,5 @@ int _printf(const char *format, ...)
 			i++;
 		}
 	va_end(args);
-	return (len - 1);
+	return (len);
 }
