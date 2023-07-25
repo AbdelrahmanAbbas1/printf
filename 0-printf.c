@@ -13,7 +13,6 @@ void print_s(char *arg)
 		_putchar(*arg);
 		arg++;
 	}
-	_putchar('\0');
 }
 /**
  * _printf - Prints the output according to a certain format
@@ -43,6 +42,7 @@ int _printf(const char *format, ...)
 					case 's':
 						print_s(va_arg(args, char *));
 						break;
+					case '\0':
 					case '%':
 						_putchar('%');
 						break;
