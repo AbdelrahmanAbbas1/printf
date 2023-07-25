@@ -33,26 +33,6 @@ int _printf(const char *format, ...)
 						s++;
 					}
 					break;
-				case 'd':
-				case 'i':
-					print_i_d(va_arg(args, int));
-					break;
-				case 'b':
-					print_b(va_arg(args, unsigned int));
-					break;
-				case 'u':
-					print_uo(10, va_arg(args, unsigned int));
-					break;
-				case 'o':
-					print_uo(8, va_arg(args, unsigned int));
-					break;
-				case 'x':
-				case 'X':
-					print_xx(format[i + 1], va_arg(args, unsigned int));
-					break;
-				case 'S':
-					print_S(va_arg(args, char *));
-					break;
 				default:
 					_putchar(format[i]);
 					_putchar(format[i + 1]);
