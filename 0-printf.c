@@ -46,6 +46,16 @@ int _printf(const char *format, ...)
 						}
 						len += sum - 1;
 						}
+						else
+						{
+							_putchar('(');
+							_putchar('n');
+							_putchar('u');
+							_putchar('l');
+							_putchar('l');
+							_putchar(')');
+							len += 5;
+						}
 						break;
 					case '%':
 						_putchar('%');
