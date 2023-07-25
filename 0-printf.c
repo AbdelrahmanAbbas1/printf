@@ -42,6 +42,9 @@ int _printf(const char *format, ...)
 					case 's':
 						print_s(va_arg(args, char *));
 						break;
+					case '%':
+						_putchar('%');
+						break;
 					default:
 						_putchar(format[i]);
 						_putchar(format[i + 1]);
