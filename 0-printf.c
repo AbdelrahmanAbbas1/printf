@@ -46,8 +46,6 @@ int _printf(const char *format, ...)
 						}
 						len += sum - 1;
 						}
-						else
-							return (-1);
 						break;
 					case '%':
 						_putchar('%');
