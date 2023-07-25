@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include <stdarg.h>
 
 /**
@@ -10,6 +11,7 @@ void print_s(char *arg)
 {
 	if (arg == NULL)
 		return;
+
 	while (*arg != '\0')
 	{
 		_putchar(*arg);
@@ -61,9 +63,13 @@ int _printf(const char *format, ...)
 				i++;
 			}
 			else
+			{
 				_putchar(format[i]);
+				len++;
+			}
 			i++;
 		}
 	va_end(args);
+	printf("\nThe number of len: %d\n", len);
 	return (len);
 }
