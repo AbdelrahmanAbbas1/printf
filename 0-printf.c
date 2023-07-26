@@ -11,53 +11,44 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, len = 0;
+	int i, len = 0, sum;
 	va_list args;
 	char *s;
-	int sum;
 
 	va_start(args, format);
 	if (format == NULL)
-	{
 		return (-1);
-	}
-		while (format[i] != '\0')
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		len++;
+		if (format[i] == '%')
 		{
-			if (format[i] == '%')
+			if ((format[i + 1]) == '\0')
+				return (-1);
+			switch (format[i + 1])
 			{
-				len++;
-				if ((format[i + 1]) == '\0')
-				{
-					return (-1);
-				}
-				switch (format[i + 1])
-				{
-					case 'c':
-						_putchar(va_arg(args, int));
-						break;
-					case 's':
-						s = va_arg(args, char *);
-						sum = print_s(s);
-						len = len + (sum - 1);
-						break;
-					case '%':
-						_putchar('%');
-						break;
-					default:
-						_putchar(format[i]);
-						_putchar(format[i + 1]);
-						len++;
-						break;
-				}
-				i++;
-			}
-			else
-			{
-				_putchar(format[i]);
-				len++;
+				case 'c':
+					_putchar(va_arg(args, int));
+					break;
+				case 's':
+					s = va_arg(args, char *);
+					sum = print_s(s);
+					len = len + (sum - 1);
+					break;
+				case '%':
+					_putchar('%');
+					break;
+				default:
+					_putchar(format[i]);
+					_putchar(format[i + 1]);
+					len++;
+					break;
 			}
 			i++;
 		}
+		else
+			_putchar(format[i]);
+	}
 	va_end(args);
 	return (len);
 }
