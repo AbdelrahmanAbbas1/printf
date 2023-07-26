@@ -4,7 +4,7 @@
 
 /**
  * print_num - Prints number according to the specifier
- * @arg the argument to be passed
+ * @arg: the argument to be passed
  *
  * Return: The number of characters to be printed
  */
