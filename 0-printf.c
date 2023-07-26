@@ -11,7 +11,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, len = 0, sum;
+	int i, len = 0, sum, sum1, n;
 	va_list args;
 	char *s;
 
@@ -37,6 +37,15 @@ int _printf(const char *format, ...)
 					break;
 				case '%':
 					_putchar('%');
+					break;
+				case 'd':
+				case 'i':
+					n = va_arg(args, int);
+					sum1 = print_num(n);
+					if (n < 0)
+						len += sum1;
+					else
+						len += sum1 - 1;
 					break;
 				default:
 					_putchar(format[i]);
