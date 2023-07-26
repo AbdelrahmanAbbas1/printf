@@ -5,7 +5,7 @@
  * print_s - Prints string
  * @arg: The argument to be passed
  *
- * return: the length of the string
+ * Return: the length of the string
  */
 int print_s(char *arg)
 {
