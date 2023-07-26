@@ -1,7 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
-#include <stdarg.h>
-
 /**
  * print_num - Prints number according to the specifier
  * @arg: the argument to be passed

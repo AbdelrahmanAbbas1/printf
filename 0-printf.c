@@ -1,13 +1,10 @@
 #include "main.h"
-#include <stdlib.h>
-#include <stdarg.h>
-
 /**
  * _printf - Prints the output according to a certain format
  * @format: The format to be followed
  * @...: The arguments to be passed
  *
- * Return: 0 (Sucess)
+ * Return: length of printed string
  */
 int _printf(const char *format, ...)
 {
