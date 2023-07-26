@@ -18,10 +18,10 @@ int print_num(int arg)
 		_putchar('2');
 		arg = 147483648;
 		i = arg % 10;
-	       	len = print_num(arg / 10);
+		len = print_num(arg / 10);
 		len++;
-	       	_putchar (i + '0');
-	       	return (10);
+		_putchar (i + '0');
+		return (10);
 	}
 	else if (arg < 0)
 	{
