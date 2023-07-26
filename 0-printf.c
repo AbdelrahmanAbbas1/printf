@@ -41,11 +41,20 @@ int _printf(const char *format, ...)
 				case 'd':
 				case 'i':
 					n = va_arg(args, int);
-					sum1 = print_num(n);
-					if (n < 0)
-						len += sum1;
-					else
+					if (n == 0)
+					{
+						_putchar('0');
+						sum1 = 1;
 						len += sum1 - 1;
+					}
+					else
+					{
+						sum1 = print_num(n);
+						if (n < 0)
+							len += sum1;
+						else
+							len += sum1 - 1;
+					}
 					break;
 				default:
 					_putchar(format[i]);
