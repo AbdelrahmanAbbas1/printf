@@ -37,26 +37,8 @@ int _printf(const char *format, ...)
 						break;
 					case 's':
 						s = va_arg(args, char *);
-						sum = 0;
-						if (s != NULL)
-						{
-						while (s[sum] != '\0')
-						{
-							_putchar(s[sum]);
-							sum++;
-						}
-						len += sum - 1;
-						}
-						else
-						{
-							_putchar('(');
-							_putchar('n');
-							_putchar('u');
-							_putchar('l');
-							_putchar('l');
-							_putchar(')');
-							len += 5;
-						}
+						sum = print_s(s);
+						len = len + (sum - 1);
 						break;
 					case '%':
 						_putchar('%');
