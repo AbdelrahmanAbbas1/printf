@@ -8,62 +8,44 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, len = 0, sum, sum1, n;
-	va_list args;
-	char *s;
+	int i, printed = 0, len = 0;
+	int flags, width, precision, size, buff_index = 0;
+	va_list ap;
+	char buffer[BUFF_SIZE];
 
-	va_start(args, format);
 	if (format == NULL)
 		return (-1);
-	for (i = 0; format[i] != '\0'; i++)
+
+	va_start(ap, format);
+
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
-		len++;
-		if (format[i] == '%')
+		if (format[i] != '%')
 		{
-			if ((format[i + 1]) == '\0')
-				return (-1);
-			switch (format[i + 1])
-			{
-				case 'c':
-					_putchar(va_arg(args, int));
-					break;
-				case 's':
-					s = va_arg(args, char *);
-					sum = print_s(s);
-					len = len + (sum - 1);
-					break;
-				case '%':
-					_putchar('%');
-					break;
-				case 'd':
-				case 'i':
-					n = va_arg(args, int);
-					if (n == 0)
-					{
-						_putchar('0');
-						sum1 = 1;
-						len += sum1 - 1;
-					}
-					else
-					{
-						sum1 = print_num(n);
-						if (n < 0)
-							len += sum1;
-						else
-							len += sum1 - 1;
-					}
-					break;
-				default:
-					_putchar(format[i]);
-					_putchar(format[i + 1]);
-					len++;
-					break;
-			}
-			i++;
+			buffer[buff_index++] = format[i];
+			if (buff_index == BUFF_SIZE)
+				print_buffer(buffer, &buff_index);
+			len++;
 		}
 		else
-			_putchar(format[i]);
+		{
+			print_buffer(buffer, &buff_index);
+			flags = get_flags(format, &i);
+			width = get_width(format, &i, ap);
+			precision = get_precision(format, &i, ap);
+			size = get_size(format, &i);
+			i++;
+			printed = handle_print(format, &i, ap, buffer,
+				flags, width, precision, size);
+			if (printed == -1)
+				return (-1);
+			len += printed;
+		}
 	}
-	va_end(args);
+
+	print_buffer(buffer, &buff_index);
+
+	va_end(ap);
+
 	return (len);
 }
