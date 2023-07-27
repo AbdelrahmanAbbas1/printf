@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%' || (format[i] == '%' && format[i + 1] == '%'))
 		{
-			if (format[i + 1] == '%')
+			if (format[i] == '%' && format[i + 1] == '%')
 				i++;
 			buffer[buff_index++] = format[i];
 			if (buff_index == BUFF_SIZE)
