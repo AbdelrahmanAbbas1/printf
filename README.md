@@ -31,3 +31,17 @@ Here's a basic outline of how we can implement this function:
 2. Use the va_list, va_start, va_arg, and va_end macros from <stdarg.h> to handle variable arguments.
 3. Use the write system call from <unistd.h> to write the formatted output directly to the standard output.
 
+
+# Flag check functions:
+1. `get_flags`: function extracts flags from the format specifier in a format string. It looks for valid flag characters `('-', '+', '0', '#', ' ')` that follow the % symbol and combines them into a single integer. 
+This integer represents the accumulated flags and can be used to modify the formatting behavior of the corresponding argument when processing the format string. 
+The function updates the index pointer to skip over the flags and returns the combined flags as an integer.
+
+2. `get_precision`: function calculates the precision for printing floating-point numbers in a format string. The precision specifies how many digits should be displayed after the decimal point when formatting a floating-point value.
+
+3. `get_size`: function calculates the size to cast the argument in a format string. It is used to determine if a size modifier like 'l'(for `long`) or 'h' (for `short`) is specified for the corresponding argument. 
+These size modifiers change the data type of the argument during printing.
+
+4. `get_width`: function calculates the printing width for an argument in a format string. 
+The printing width specifies the minimum number of characters to be printed for the argument. 
+If the printed value is shorter than the specified width, it will be padded with spaces to meet the minimum width requirement.
