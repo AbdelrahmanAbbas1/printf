@@ -21,6 +21,7 @@ int handle_print(const char *format, int *index, va_list list, char buffer[],
 		{'s', printStr},
 		{'i', print_int},
 		{'d', print_int},
+		{'b', print_bin},
 		{'\0', NULL}
 	};
 

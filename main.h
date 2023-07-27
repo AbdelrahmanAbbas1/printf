@@ -104,7 +104,9 @@ int printStr(va_list types, char buffer[],
 /*function to print signed int*/
 int print_int(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-
+/*function to print binary*/
+int print_bin(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
 /*************END Printing Functions************/
 
 #endif
