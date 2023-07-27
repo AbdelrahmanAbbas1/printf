@@ -31,7 +31,7 @@ int print_bin(va_list types, char buffer[],
 	}
 	else
 	{
-		for (i = 0; (num >= (1 << i)) &&  i < 32; i++)
+		for (i = 0; (num >= ((unsigned int) (1 << i))) &&  i < 32; i++)
 		{
 			if (num & (1 << i))
 				bin[i] = '1';
