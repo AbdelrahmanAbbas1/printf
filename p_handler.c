@@ -19,6 +19,8 @@ int handle_print(const char *format, int *index, va_list list, char buffer[],
 	specifier_t specifier_types[] = {
 		{'c', print_char},
 		{'s', printStr},
+		{'i', print_int},
+		{'d', print_int},
 		{'\0', NULL}
 	};
 
