@@ -86,7 +86,9 @@ int is_digit(char c);
 /*function to print character*/
 int print_char(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
-
+/*function to print string*/
+int printStr(va_list types, char buffer[],
+	int flags, int width, int precision, int size);
 /*************END Printing Functions************/
 
 #endif
