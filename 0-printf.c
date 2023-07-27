@@ -18,8 +18,10 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 	for (i = 0; format && format[i] != '\0'; i++)
 	{
-		if (format[i] != '%')
+		if (format[i] != '%' || (format[i] == '%' && format[i + 1] == '%'))
 		{
+			if (format[i + 1] == '%')
+				i++;
 			buffer[buff_index++] = format[i];
 			if (buff_index == BUFF_SIZE)
 				print_buffer(buffer, &buff_index);
@@ -27,28 +29,17 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			if (format[i] == '%' && format[i + 1] == '%')
-			{
-				buffer[buff_index++] = '%';
-				if (buff_index == BUFF_SIZE)
-					print_buffer(buffer, &buff_index);
-				len++;
-				i++;
-			}
-			else
-			{
-				print_buffer(buffer, &buff_index);
-				flags = get_flags(format, &i);
-				width = get_width(format, &i, ap);
-				precision = get_precision(format, &i, ap);
-				size = get_size(format, &i);
-				i++;
-				printed = handle_print(format, &i, ap, buffer,
-					flags, width, precision, size);
-				if (printed == -1)
-					return (-1);
-				len += printed;
-			}
+			print_buffer(buffer, &buff_index);
+			flags = get_flags(format, &i);
+			width = get_width(format, &i, ap);
+			precision = get_precision(format, &i, ap);
+			size = get_size(format, &i);
+			i++;
+			printed = handle_print(format, &i, ap, buffer,
+				flags, width, precision, size);
+			if (printed == -1)
+				return (-1);
+			len += printed;
 		}
 	}
 	print_buffer(buffer, &buff_index);
