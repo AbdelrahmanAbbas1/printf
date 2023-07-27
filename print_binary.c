@@ -22,7 +22,7 @@ int print_bin(va_list types, char buffer[],
 	UNUSED(size);
 
 	num = va_arg(types, unsigned int);
-	
+
 	if (num == 0)
 	{
 		count = 1;
@@ -46,6 +46,6 @@ int print_bin(va_list types, char buffer[],
 		}
 		write(1, &bin[i], 1);
 	}
-	
+
 	return (count);
 }

@@ -8,7 +8,7 @@
  */
 int get_size(const char *format, int *index)
 {
-    enum SIZE size = DEF;
+	enum SIZE size = DEF;
 	int curr_index = *index + 1;
 
 	if (format[curr_index] == 'l')
